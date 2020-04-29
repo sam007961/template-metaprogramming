@@ -1,5 +1,5 @@
-template<int n>
-constexpr int factorial = factorial<n - 1> * n;
+template<unsigned n>
+constexpr unsigned factorial = factorial<n - 1> * n;
 
 template<>
-constexpr int factorial<0> = 1;
+constexpr unsigned factorial<0U> = 1U;
