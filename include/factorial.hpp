@@ -1,5 +1,9 @@
 template<unsigned n>
-constexpr unsigned factorial = factorial<n - 1> * n;
+struct Factorial {
+    enum { value = n * Factorial<n - 1>::value };
+};
 
 template<>
-constexpr unsigned factorial<0U> = 1U;
+struct Factorial<0U> {
+    enum { value = 1 };
+};
