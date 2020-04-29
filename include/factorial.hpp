@@ -1,9 +1,8 @@
-template<unsigned n>
-struct Factorial {
-    enum { value = n * Factorial<n - 1>::value };
-};
+#include <type_traits>
+using std::integral_constant;
 
-template<>
-struct Factorial<0U> {
-    enum { value = 1 };
-};
+template<long N> struct Factorial : 
+    integral_constant<unsigned, N * Factorial<N - 1>::value> {};
+
+template<> struct Factorial<0> :
+    integral_constant<long, 1> {};
